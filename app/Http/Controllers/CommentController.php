@@ -52,7 +52,12 @@ class CommentController extends Controller
         $product = Comment::find($id);
         $product->update($request->all());
 
-        return response()->json('Product updated!');
+        return response()->json([
+            'id' => $product->id,
+            'name' => $product->name,
+            'text' => $product->text,
+            'date' => $product->date
+        ]);
     }
 
     public function destroy($id)
